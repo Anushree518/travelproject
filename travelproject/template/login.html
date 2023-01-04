@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h2{
+            text-align:center;
+            color:blue;
+        }
+        input{
+            width=100%;
+            padding:5px;
+            margin:2px
+        }
+        .demo1{
+            padding:50px;
+            text-align:center;
+            background-color:pink;
+        }
+        .success{
+            list-style: none;
+            background-color: #2e6da4;
+            color: white;
+            box-shadow: 12px 12px 12px #e61c66;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+{% if messages %}
+        <ul class="messages">
+               {% for message in messages %}
+                     <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+               {% endfor %}
+       </ul>
+{% endif %}
+
+<form action="login" method="post">
+    {% csrf_token%}
+    <div class="demo1">
+    <h2> LOGIN PAGE</h2>
+    <label> User Name :</label>
+    <input type="text" name="username" placeholder="User name" size="27"> <br>
+    <label> Password :</label>
+    <input type="password" name="password" placeholder="password" size="28"> <br>
+    <!--<label> Re-type password :</label>
+    <input type="password" name="password" placeholder="confirm password" size="20"> <br>-->
+    <button type="submit" name="submit"> Login</button>
+    </div>
+</form>
+</body>
+</html>

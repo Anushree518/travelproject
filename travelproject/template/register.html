@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h2{
+            text-align: center;
+            color:blue;
+        }
+        form{
+            color:blue;
+        }
+        .demo{
+            padding:50px;
+            background-color:tomato;
+        }
+        input{
+            width=100%;
+            padding:5px;
+            margin:2px
+        }
+        .success{
+            list-style: none;
+            background-color: #2e6da4;
+            color: white;
+            box-shadow: 12px 12px 12px #e61c66;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+{% if messages %}
+        <ul class="messages">
+               {% for message in messages %}
+                     <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+               {% endfor %}
+       </ul>
+{% endif %}
+<form action="register" method="post" >
+    {% csrf_token %}
+    <div class="demo">
+    <h2> REGISTERATION FORM</h2>
+    <label> <b>User Name :</b></label> <br>
+    <input type="text" name="username" placeholder="Enter the name" size="40"> <br>
+    <label> <b>First Name :</b></label> <br>
+    <input type="text" name="first_name" placeholder="Enter the First name" size="40"> <br>
+    <label> <b>Last Name :</b></label> <br>
+    <input type="text" name="last_name" placeholder="Enter the last name" size="40"> <br>
+    <label> <b> Email :</b></label> <br>
+    <input type="email" name="email" placeholder="Enter the email id" size="40"> <br>
+    <label> <b>Password :</b></label> <br>
+    <input type="password" name="password" placeholder="Enter the password" size="40"> <br>
+    <label> <b>Re-Type Password :</b></label> <br>
+    <input type="password" name="password1" placeholder="Re-enter password" size="40"> <br>
+    <input type="submit" name="register">
+    </div>
+</form>
+{% for msg in messages %}
+
+{% endfor%}
+</body>
+</html>
